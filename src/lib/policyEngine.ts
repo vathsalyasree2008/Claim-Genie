@@ -16,6 +16,10 @@ export interface CostBreakdown {
   claimableAmount: number;
   maxLimitApplied: boolean;
   coveragePercent: number;
+  ncbDiscount: number;
+  idvValue: number;
+  zeroDepApplied: boolean;
+  addOns: string[];
 }
 
 export function calculateClaimCost(
@@ -23,6 +27,7 @@ export function calculateClaimCost(
   vehicle: Vehicle
 ): CostBreakdown {
   const vehicleAge = new Date().getFullYear() - vehicle.year;
+  const hasZeroDep = vehicle.addOns.includes('Zero Depreciation');
 
   const parts: DamagedPart[] = damagedPartNames.map(({ partName, severity }) => {
     const catalog = PARTS_CATALOG.find(p => p.partName === partName);
@@ -41,7 +46,8 @@ export function calculateClaimCost(
       catalog.baseCostRange[0] + (catalog.baseCostRange[1] - catalog.baseCostRange[0]) * 0.6
     );
 
-    const depreciationFactor = Math.max(0.3, 1 - catalog.depreciationRate * vehicleAge);
+    // Zero Depreciation add-on skips depreciation
+    const depreciationFactor = hasZeroDep ? 1.0 : Math.max(0.3, 1 - catalog.depreciationRate * vehicleAge);
     const depreciatedCost = Math.round(baseCost * depreciationFactor);
     const finalCost = Math.round(depreciatedCost * SEVERITY_MULTIPLIER[severity]);
 
@@ -64,6 +70,9 @@ export function calculateClaimCost(
   const maxLimitApplied = afterDeductible > vehicle.maxCoverageLimit;
   const claimableAmount = Math.min(afterDeductible, vehicle.maxCoverageLimit);
 
+  // NCB discount info (applied to premium, shown for info)
+  const ncbDiscount = vehicle.ncbPercent;
+
   return {
     parts,
     totalBaseCost,
@@ -74,5 +83,9 @@ export function calculateClaimCost(
     claimableAmount,
     maxLimitApplied,
     coveragePercent: vehicle.coveragePercent,
+    ncbDiscount,
+    idvValue: vehicle.idvValue,
+    zeroDepApplied: hasZeroDep,
+    addOns: vehicle.addOns,
   };
 }

@@ -1,4 +1,4 @@
-import { Car, User, FileText, Calendar, IndianRupee, ShieldCheck } from 'lucide-react';
+import { Car, User, FileText, Calendar, IndianRupee, ShieldCheck, Shield, Sparkles } from 'lucide-react';
 import { Vehicle } from '@/data/mockDatabase';
 
 interface VehicleCardProps {
@@ -14,7 +14,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
         <div className="rounded-full bg-primary/10 p-2">
           <Car className="h-5 w-5 text-primary" />
         </div>
-        <h3 className="font-display font-semibold text-card-foreground">Vehicle Details</h3>
+        <h3 className="font-display font-semibold text-card-foreground">Vehicle & Policy Details</h3>
       </div>
 
       <div className="grid grid-cols-2 gap-3 text-sm">
@@ -62,7 +62,36 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
             <p className="font-medium text-card-foreground">₹{vehicle.maxCoverageLimit.toLocaleString('en-IN')}</p>
           </div>
         </div>
+        <div className="flex items-center gap-2">
+          <IndianRupee className="h-3.5 w-3.5 text-muted-foreground" />
+          <div>
+            <p className="text-muted-foreground text-xs">IDV</p>
+            <p className="font-medium text-card-foreground">₹{vehicle.idvValue.toLocaleString('en-IN')}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-3.5 w-3.5 text-muted-foreground" />
+          <div>
+            <p className="text-muted-foreground text-xs">NCB</p>
+            <p className="font-medium text-accent">{vehicle.ncbPercent}%</p>
+          </div>
+        </div>
       </div>
+
+      {vehicle.addOns.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-border">
+          <p className="text-xs text-muted-foreground mb-1.5 flex items-center gap-1">
+            <Shield className="h-3 w-3" /> Add-on Covers
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {vehicle.addOns.map(addon => (
+              <span key={addon} className="text-xs px-2 py-0.5 rounded-full bg-accent/10 text-accent font-medium">
+                {addon}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

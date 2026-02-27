@@ -1,5 +1,6 @@
-import { Shield, Car } from 'lucide-react';
+import { Shield, Car, Settings } from 'lucide-react';
 import { ChatBot } from '@/components/claim/ChatBot';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   return (
@@ -19,9 +20,15 @@ const Index = () => {
             </h1>
             <p className="text-xs text-primary-foreground/70">AI-Powered Insurance Claim Assistant</p>
           </div>
-          <div className="ml-auto flex items-center gap-1.5 text-xs text-primary-foreground/60">
-            <Car className="h-4 w-4" />
-            <span className="hidden sm:inline">Motor Insurance</span>
+          <div className="ml-auto flex items-center gap-3">
+            <div className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
+              <Car className="h-4 w-4" />
+              <span className="hidden sm:inline">Motor Insurance</span>
+            </div>
+            <Link to="/admin" className="flex items-center gap-1 text-xs text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors">
+              <Settings className="h-4 w-4" />
+              <span className="hidden sm:inline">Admin</span>
+            </Link>
           </div>
         </div>
       </header>
