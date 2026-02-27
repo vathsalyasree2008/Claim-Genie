@@ -158,6 +158,24 @@
 }
 
 @keyframes pulseDot {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Prose overrides for chat markdown */
+.prose p { margin: 0.25rem 0; }
+.prose ul { margin: 0.25rem 0; padding-left: 1.25rem; }
+.prose li { margin: 0; }
+.prose strong { font-weight: 600; }
+.prose hr { margin: 0.75rem 0; border-color: hsl(var(--border)); }
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
