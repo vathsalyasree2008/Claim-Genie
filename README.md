@@ -56,7 +56,7 @@ No external dependencies are required. The project runs fully on HTML, CSS, and 
 
 Installation
 # Clone the repository
-git clone https://github.com/yourusername/claimgenie.git
+git clone https://github.com/vathsalyasree2008/Claim-Genie
 
 # Navigate into the project directory
 cd claimgenie
@@ -102,7 +102,7 @@ Contributions are welcome.
 Steps:
 # 1. Fork the repository
 # 2. Clone your fork
-git clone https://github.com/yourusername/claimgenie.git
+git clone https://github.com/vathsalyasree2008/Claim-Genie
 
 # 3. Create a new branch
 git checkout -b feature/your-feature-name
