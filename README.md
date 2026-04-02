@@ -1,4 +1,4 @@
-# ClaimGenie 🧾
+# ClaimGenie 
 
 > AI-Driven Claim & Document Generation Platform
 
@@ -6,7 +6,7 @@ ClaimGenie helps users generate formal legal documents — insurance claims, ref
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 claimgenie/
@@ -21,7 +21,7 @@ claimgenie/
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 ### 1. Clone the repo
 ```bash
@@ -58,7 +58,7 @@ Open `frontend/index.html` in your browser **or** visit `http://127.0.0.1:8000` 
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -94,7 +94,7 @@ Open `frontend/index.html` in your browser **or** visit `http://127.0.0.1:8000` 
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -104,7 +104,7 @@ Open `frontend/index.html` in your browser **or** visit `http://127.0.0.1:8000` 
 
 ---
 
-## 📦 Deployment
+##  Deployment
 
 You can deploy this on:
 - **Render** — push to GitHub, connect repo, set start command: `uvicorn backend.main:app --host 0.0.0.0 --port 10000`
